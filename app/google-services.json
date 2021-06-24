@@ -1,0 +1,233 @@
+{
+  "project_info": {
+    "project_number": "303343416512",
+    "firebase_url": "https://cursoudemy-1359b.firebaseio.com",
+    "project_id": "cursoudemy-1359b",
+    "storage_bucket": "cursoudemy-1359b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303343416512:android:1b332a1d0a814d52d12925",
+        "android_client_info": {
+          "package_name": "com.example.organizze"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303343416512-ketnqi21fgvlf1vsakqifncp65svh2ln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.organizze",
+            "certificate_hash": "3455ababbce0ec10704018380e106dd37897f744"
+          }
+        },
+        {
+          "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWikuf_wJpxuQXELmpZUxem-FxjFrAnpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303343416512:android:07641e95db39bb14d12925",
+        "android_client_info": {
+          "package_name": "com.example.patrick.firebaseudemy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303343416512-io8iqhl6kaljanimbupg6tv252612gqa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.patrick.firebaseudemy",
+            "certificate_hash": "a80e67e250f202d71bbbccfb14aee24f48693697"
+          }
+        },
+        {
+          "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWikuf_wJpxuQXELmpZUxem-FxjFrAnpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303343416512:android:4f34c8a7621048bcd12925",
+        "android_client_info": {
+          "package_name": "com.example.patrick.notificacoes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303343416512-v5971073hnkf3s0tpflmfr2ak6nq9i4h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.patrick.notificacoes",
+            "certificate_hash": "a80e67e250f202d71bbbccfb14aee24f48693697"
+          }
+        },
+        {
+          "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWikuf_wJpxuQXELmpZUxem-FxjFrAnpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303343416512:android:e8dc4e23a32318b1d12925",
+        "android_client_info": {
+          "package_name": "com.example.whatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303343416512-p9m42g9pco1betgecn39078a84cf8no7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.whatsapp",
+            "certificate_hash": "3455ababbce0ec10704018380e106dd37897f744"
+          }
+        },
+        {
+          "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWikuf_wJpxuQXELmpZUxem-FxjFrAnpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303343416512:android:e1baaba578c96161",
+        "android_client_info": {
+          "package_name": "com.udemy.firebaseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303343416512-8t7sg8uiabgtkjdnjlt34r3tk7nq0qml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.udemy.firebaseapp",
+            "certificate_hash": "b740949a4c493b2fae00995b469f59fa36b5d4b3"
+          }
+        },
+        {
+          "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWikuf_wJpxuQXELmpZUxem-FxjFrAnpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303343416512:android:2e0776a4aa151924",
+        "android_client_info": {
+          "package_name": "com.udemy.localizacaousuario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303343416512-8agspv054nvcjtncdu5ljkc739ia9ft4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.udemy.localizacaousuario",
+            "certificate_hash": "b740949a4c493b2fae00995b469f59fa36b5d4b3"
+          }
+        },
+        {
+          "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWikuf_wJpxuQXELmpZUxem-FxjFrAnpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303343416512-qif65etjmkcjdsh5flkvphf4mknh8ged.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
