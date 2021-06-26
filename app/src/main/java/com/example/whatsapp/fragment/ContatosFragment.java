@@ -69,7 +69,9 @@ public class ContatosFragment extends Fragment {
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
+                                Usuario usuarioSelecionado = listaContatos.get(position);
                                 Intent i = new Intent(getActivity(), ChatActivity.class);
+                                i.putExtra("chatContato", usuarioSelecionado);
                                 startActivity(i);
                             }
 
@@ -105,6 +107,7 @@ public class ContatosFragment extends Fragment {
         valueEventListenerContatos = usuariosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                listaContatos.clear();
                 for (DataSnapshot dados: snapshot.getChildren()){
 
                     Usuario usuario = dados.getValue(Usuario.class);
