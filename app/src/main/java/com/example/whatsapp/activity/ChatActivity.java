@@ -17,8 +17,13 @@ import com.example.whatsapp.helper.UsuarioFirebase;
 import com.example.whatsapp.model.Mensagem;
 import com.example.whatsapp.model.Usuario;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +40,9 @@ public class ChatActivity extends AppCompatActivity {
     private CircleImageView circleImageViewFoto;
     private EditText editMensagem;
     private Usuario usuarioDestinatario;
+    private DatabaseReference database;
+    private DatabaseReference mensagensRef;
+    private ChildEventListener childEventListenerMensagens;
 
     //Identificador usuario remetente e destinatario
     private String idUsuarioRemetente;
@@ -93,6 +101,11 @@ public class ChatActivity extends AppCompatActivity {
         recyclerMensagens.setHasFixedSize(true);
         recyclerMensagens.setAdapter(adapter);
 
+        database = ConfiguracaoFirebase.getFirebaseDatabase();
+        mensagensRef = database.child("mensagens")
+                .child(idUsuarioRemetente)
+                .child(idUsuarioDestinatario);
+
     }
 
     public void enviarMensagem(View view){
@@ -117,15 +130,61 @@ public class ChatActivity extends AppCompatActivity {
     private void salvarMensagem(String idRemetente, String idDestinatario, Mensagem msg){
 
         DatabaseReference database = ConfiguracaoFirebase.getFirebaseDatabase();
-        DatabaseReference mensagemRef = database.child("mensagens");
+        mensagensRef = database.child("mensagens");
 
-        mensagemRef.child(idRemetente)
+        mensagensRef.child(idRemetente)
                 .child(idDestinatario)
                 .push()
                 .setValue(msg);
 
         //Limpar texto
         editMensagem.setText("");
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        recuperarMensagens();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mensagensRef.removeEventListener(childEventListenerMensagens);
+    }
+
+    private void recuperarMensagens(){
+
+        childEventListenerMensagens = mensagensRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Mensagem mensagem = snapshot.getValue(Mensagem.class);
+                mensagens.add(mensagem);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
