@@ -17,9 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatsApp">
         <activity
+            android:name=".activity.GrupoActivity"
+            android:label="@string/title_activity_grupo"
+            android:theme="@style/Theme.WhatsApp.NoActionBar"></activity>
+        <activity
             android:name=".activity.ChatActivity"
             android:label="@string/title_activity_chat"
-            android:theme="@style/Theme.WhatsApp.NoActionBar"></activity>
+            android:theme="@style/Theme.WhatsApp.NoActionBar" />
         <activity
             android:name=".activity.ConfiguracoesActivity"
             android:parentActivityName=".activity.MainActivity" />
