@@ -1,5 +1,6 @@
 package com.example.whatsapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,8 +61,11 @@ public class GrupoActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        binding.fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
+        binding.fabAvancarCadastro.setOnClickListener(view -> {
+            Intent i = new Intent(GrupoActivity.this, CadastroGrupoActivity.class);
+            i.putExtra("membros", (Serializable) listaMembrosSelecionados);
+            startActivity(i);
+        });
 
         //Configurações iniciais
         recyclerMembros = findViewById(R.id.recyclerMembros);
