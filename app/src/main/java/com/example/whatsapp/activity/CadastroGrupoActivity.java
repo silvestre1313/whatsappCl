@@ -92,6 +92,7 @@ public class CadastroGrupoActivity extends AppCompatActivity {
 
             grupo.setNome(nomeGrupo);
             grupo.salvar();
+            startActivity(new Intent(CadastroGrupoActivity.this, MainActivity.class));
         });
 
         //Recuperar lista de membros passada
