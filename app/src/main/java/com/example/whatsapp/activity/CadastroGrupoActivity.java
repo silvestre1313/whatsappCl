@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.example.whatsapp.adapter.GrupoSelecionadoAdapter;
 import com.example.whatsapp.config.ConfiguracaoFirebase;
 import com.example.whatsapp.databinding.ActivityCadastroGrupoBinding;
+import com.example.whatsapp.helper.UsuarioFirebase;
 import com.example.whatsapp.model.Grupo;
 import com.example.whatsapp.model.Usuario;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -19,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +53,7 @@ public class CadastroGrupoActivity extends AppCompatActivity {
     private static final int SELECAO_GALERIA = 200;
     private StorageReference storageReference;
     private Grupo grupo;
+    private EditText editNomeGrupo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,7 @@ public class CadastroGrupoActivity extends AppCompatActivity {
         imageGrupo = findViewById(R.id.imageGrupo);
         storageReference = ConfiguracaoFirebase.getFirebaseStorage();
         grupo = new Grupo();
+        editNomeGrupo = findViewById(R.id.editNomeGrupo);
 
         //Configurar evento de clique
         imageGrupo.setOnClickListener(v -> {
@@ -79,12 +83,15 @@ public class CadastroGrupoActivity extends AppCompatActivity {
         });
 
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+        binding.fabSalvarGrupo.setOnClickListener(view -> {
+            String nomeGrupo = editNomeGrupo.getText().toString();
+
+            //Adiociona à lista de membros o ususario que esta logado
+            listaMembrosSelecionados.add(UsuarioFirebase.getDadosUsuarioLogado());
+            grupo.setMembros(listaMembrosSelecionados);
+
+            grupo.setNome(nomeGrupo);
+            grupo.salvar();
         });
 
         //Recuperar lista de membros passada
