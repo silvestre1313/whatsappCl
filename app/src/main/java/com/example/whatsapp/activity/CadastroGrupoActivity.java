@@ -92,7 +92,11 @@ public class CadastroGrupoActivity extends AppCompatActivity {
 
             grupo.setNome(nomeGrupo);
             grupo.salvar();
-            startActivity(new Intent(CadastroGrupoActivity.this, MainActivity.class));
+
+            Intent i = new Intent(CadastroGrupoActivity.this, ChatActivity.class);
+            i.putExtra("chatGrupo", grupo);
+            startActivity(i);
+
         });
 
         //Recuperar lista de membros passada
