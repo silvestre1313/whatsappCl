@@ -17,9 +17,11 @@ import com.example.whatsapp.R;
 import com.example.whatsapp.activity.ChatActivity;
 import com.example.whatsapp.activity.GrupoActivity;
 import com.example.whatsapp.adapter.ContatosAdapter;
+import com.example.whatsapp.adapter.ConversasAdapter;
 import com.example.whatsapp.config.ConfiguracaoFirebase;
 import com.example.whatsapp.helper.RecyclerItemClickListener;
 import com.example.whatsapp.helper.UsuarioFirebase;
+import com.example.whatsapp.model.Conversa;
 import com.example.whatsapp.model.Usuario;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ContatosFragment extends Fragment {
 
@@ -70,7 +73,10 @@ public class ContatosFragment extends Fragment {
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                Usuario usuarioSelecionado = listaContatos.get(position);
+
+                                List<Usuario> listaUsuariosAtualizada = adapter.getContatos();
+
+                                Usuario usuarioSelecionado = listaUsuariosAtualizada.get(position);
                                 boolean cabecalho = usuarioSelecionado.getEmail().isEmpty();
                                 if (cabecalho){
                                     Intent i = new Intent(getActivity(), GrupoActivity.class);
@@ -143,4 +149,32 @@ public class ContatosFragment extends Fragment {
             }
         });
     }
+
+    public void pesquisarContatos(String texto){
+
+        List<Usuario> listaContatosBusca = new ArrayList<>();
+
+        for (Usuario usuario : listaContatos){
+
+            String nome = usuario.getNome().toLowerCase();
+            if (nome.contains(texto)){
+                listaContatosBusca.add(usuario);
+            }
+
+
+
+        }
+
+        adapter = new ContatosAdapter(listaContatosBusca, getActivity());
+        recyclerViewListaContatos.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+    }
+
+    public void recarregarContatos(){
+        adapter = new ContatosAdapter(listaContatos, getActivity());
+        recyclerViewListaContatos.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
 }
