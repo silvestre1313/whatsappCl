@@ -103,14 +103,8 @@ public class ContatosFragment extends Fragment {
                         }
                 )
         );
-        /* Define usuario com email vazio
-        * em caso de email vazio o usuario sera utilizado como
-        * cabeçalho, exibindo novo grupo*/
-        Usuario itemGrupo = new Usuario();
-        itemGrupo.setNome("Novo grupo");
-        itemGrupo.setEmail("");
 
-        listaContatos.add(itemGrupo);
+        adicionarMenuNovoGrupo();
 
         return view;
     }
@@ -131,7 +125,9 @@ public class ContatosFragment extends Fragment {
         valueEventListenerContatos = usuariosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-               // listaContatos.clear();
+
+                limparListaContatos();
+
                 for (DataSnapshot dados: snapshot.getChildren()){
 
                     Usuario usuario = dados.getValue(Usuario.class);
@@ -148,6 +144,24 @@ public class ContatosFragment extends Fragment {
 
             }
         });
+    }
+
+    public void limparListaContatos(){
+        listaContatos.clear();
+        adicionarMenuNovoGrupo();
+    }
+
+    public void adicionarMenuNovoGrupo(){
+
+        /* Define usuario com email vazio
+         * em caso de email vazio o usuario sera utilizado como
+         * cabeçalho, exibindo novo grupo*/
+        Usuario itemGrupo = new Usuario();
+        itemGrupo.setNome("Novo grupo");
+        itemGrupo.setEmail("");
+
+        listaContatos.add(itemGrupo);
+
     }
 
     public void pesquisarContatos(String texto){

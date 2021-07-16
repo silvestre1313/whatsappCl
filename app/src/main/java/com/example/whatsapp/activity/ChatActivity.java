@@ -195,16 +195,41 @@ public class ChatActivity extends AppCompatActivity {
                         imagemRef.getDownloadUrl().addOnCompleteListener(task -> {
                             String dowloadUrl = task.getResult().toString();
 
-                            Mensagem mensagem = new Mensagem();
-                            mensagem.setIdUsuario(idUsuarioRemetente);
-                            mensagem.setMensagem("imagem.jpeg");
-                            mensagem.setImagem(dowloadUrl);
+                            if (usuarioDestinatario != null){ //Mensagem  normal
 
-                            //Salvar mensagem para remetente
-                            salvarMensagem(idUsuarioRemetente, idUsuarioDestinatario, mensagem);
+                                Mensagem mensagem = new Mensagem();
+                                mensagem.setIdUsuario(idUsuarioRemetente);
+                                mensagem.setMensagem("imagem.jpeg");
+                                mensagem.setImagem(dowloadUrl);
 
-                            //Salvar mensagem para destinatario
-                            salvarMensagem(idUsuarioDestinatario, idUsuarioRemetente, mensagem);
+                                //Salvar mensagem para remetente
+                                salvarMensagem(idUsuarioRemetente, idUsuarioDestinatario, mensagem);
+
+                                //Salvar mensagem para destinatario
+                                salvarMensagem(idUsuarioDestinatario, idUsuarioRemetente, mensagem);
+
+                            }else{ // Mensagem em grupo
+
+                                for (Usuario membro: grupo.getMembros()){
+
+                                    String idRemetenteGrupo = Base64Custom.codificarBase64(membro.getEmail());
+                                    String idUsuarioLogadoGrupo = UsuarioFirebase.getIdentificadorUsuario();
+
+                                    Mensagem mensagem = new Mensagem();
+                                    mensagem.setIdUsuario(idUsuarioLogadoGrupo);
+                                    mensagem.setMensagem("imagem.jpeg");
+                                    mensagem.setNome(usuarioRemetente.getNome());
+                                    mensagem.setImagem(dowloadUrl);
+
+                                    //Salvar mensagem para o membro
+                                    salvarMensagem(idRemetenteGrupo, idUsuarioDestinatario, mensagem);
+
+                                    //Salvar conversa
+                                    salvarConversa(idRemetenteGrupo, idUsuarioDestinatario, usuarioDestinatario, mensagem, true);
+
+                                }
+
+                            }
 
                             Toast.makeText(this, "Sucesso ao enviar imagem", Toast.LENGTH_SHORT).show();
 
@@ -326,6 +351,8 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void recuperarMensagens(){
+
+        mensagens.clear();
 
         childEventListenerMensagens = mensagensRef.addChildEventListener(new ChildEventListener() {
             @Override
